@@ -39,7 +39,7 @@ public class Main
             NewNumPhon1.add(scanner.nextLine());
             System.out.println("Добавить еще номер телефона для текущего клиента? yes/no");
             String asnw = scanner.nextLine();
-            if (asnw != "yes"){ // НЕ РАБОТАЕТ ЭТО УСЛОВИЕ КОРРЕКТНО ПОЧЕМУ-ТО
+            if (asnw.equals("no")){ 
                 break;
             }
         }
@@ -48,10 +48,13 @@ public class Main
     }
     
     // Функция вывода перечня всех клиентов отсортированные по количеству номеров
+    // сортировка по длинне всего значения сейчас
      public static void print_all_clients(HashMap Clients){
-    System.out.println(Clients);
+    
     Set<String> keys = Clients.keySet();
-    System.out.println(keys);
+    for (String elem: keys){
+        System.out.printf("%20s: %s \n",elem, Clients.get(elem));
+    }
     //for (int i = 0;i < keys.length(); i++){ System.out.println(Clients);}
 }
     
