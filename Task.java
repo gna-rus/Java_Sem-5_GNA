@@ -16,34 +16,46 @@
 import java.util.*;
 import java.util.Scanner;
 
-
-
 public class Main
 {
+    // Функция вывода всех ключей/клиентов
     public static void print_of_nums(HashMap Clients){
     System.out.println("Все контакты");
     Set<String> keys = Clients.keySet();
     System.out.println(keys);
 }
+    // функция добавления нового клиента и его номеров телефонов
     public static HashMap add_client(HashMap Clients)
     {
         LinkedList<String> NewNumPhon1 = new LinkedList<>();
         Scanner scanner = new Scanner(System.in);
         System.out.println("Имя нового клиента: ");
         String name = scanner.nextLine();
-        System.out.println("Номер телефона нового клиента: ");
-        NewNumPhon1.add(scanner.nextLine());
-        Clients.put(name, NewNumPhon1);
         
+        // Цикл для добавления новых номеров телефонов 
+        while (true)
+        {
+            System.out.println("Номер телефона нового клиента: ");
+            NewNumPhon1.add(scanner.nextLine());
+            System.out.println("Добавить еще номер телефона для текущего клиента? yes/no");
+            String asnw = scanner.nextLine();
+            if (asnw != "yes"){ // НЕ РАБОТАЕТ ЭТО УСЛОВИЕ КОРРЕКТНО ПОЧЕМУ-ТО
+                break;
+            }
+        }
+        Clients.put(name, NewNumPhon1);
         return Clients;
     }
-
-
+    
+    // Функция вывода перечня всех клиентов отсортированные по количеству номеров
+     public static void print_all_clients(HashMap Clients){
+    System.out.println(Clients);
+}
     
 	public static void main(String[] args) {
 	    
 	System.out.println("Меню: \n1 - Вывести список всех контактов;\n2 - Добавить клиента и его номер телефона к базе дынных");
-	System.out.println("3 - Списко всех клиентов и их номеров телефонов;\n4 - Выход");
+	System.out.println("3 - Список всех клиентов и их номеров телефонов;\n4 - Выход");
     
 
     LinkedList<String> NumPhon1 = new LinkedList<>();
@@ -53,8 +65,8 @@ public class Main
     NumPhon1.add(str2);
        
     HashMap<String, LinkedList> Clients = new HashMap<>();
-   Clients.put("Иванов Иван", NumPhon1);
-   System.out.println(Clients);
+    Clients.put("Иванов Иван", NumPhon1);
+    
    
     int num = 0;
     while (num != 4){
@@ -69,6 +81,11 @@ public class Main
     if (num == 2)
     {
         Clients = add_client(Clients);
+    }
+    
+    if (num == 3)
+    {
+        print_all_clients(Clients);
     }
     
     
