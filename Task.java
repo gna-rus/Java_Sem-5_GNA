@@ -27,6 +27,13 @@ public class Main
 }
     public static HashMap add_client(HashMap Clients)
     {
+        LinkedList<String> NewNumPhon1 = new LinkedList<>();
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Имя нового клиента: ");
+        String name = scanner.nextLine();
+        System.out.println("Номер телефона нового клиента: ");
+        NewNumPhon1.add(scanner.nextLine());
+        Clients.put(name, NewNumPhon1);
         
         return Clients;
     }
