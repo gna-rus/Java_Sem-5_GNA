@@ -50,6 +50,9 @@ public class Main
     // Функция вывода перечня всех клиентов отсортированные по количеству номеров
      public static void print_all_clients(HashMap Clients){
     System.out.println(Clients);
+    Set<String> keys = Clients.keySet();
+    System.out.println(keys);
+    //for (int i = 0;i < keys.length(); i++){ System.out.println(Clients);}
 }
     
 	public static void main(String[] args) {
@@ -59,14 +62,24 @@ public class Main
     
 
     LinkedList<String> NumPhon1 = new LinkedList<>();
+    LinkedList<String> NumPhon2 = new LinkedList<>();
+    LinkedList<String> NumPhon3 = new LinkedList<>();
+    
     String str1 = new String("8(965)643-21-22");
     String str2 = new String("8(965)633-11-99");
+    String str3 = new String("8(911)322-55-12");
+    
     NumPhon1.add(str1);
     NumPhon1.add(str2);
-       
+    NumPhon2.add(str3);
+    NumPhon3.add(str1);
+    NumPhon3.add(str2);
+    NumPhon3.add(str3);
+    
     HashMap<String, LinkedList> Clients = new HashMap<>();
     Clients.put("Иванов Иван", NumPhon1);
-    
+    Clients.put("Петров Петр", NumPhon2);
+    Clients.put("Мариянова Маша", NumPhon3);
    
     int num = 0;
     while (num != 4){
