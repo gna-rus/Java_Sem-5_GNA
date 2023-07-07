@@ -32,7 +32,7 @@ public class Task {
         System.out.println("Имя нового клиента: ");
         String name = scanner.nextLine();
 
-        // Цикл для добавления новых номеров телефонов 
+    // Цикл для добавления новых номеров телефонов 
         while (true) {
             System.out.println("Номер телефона нового клиента: ");
             NewNumPhon1.add(scanner.nextLine());
@@ -46,8 +46,19 @@ public class Task {
         return Clients;
     }
 
+    // Функция вывода перечня всех клиентов 
+    // Сортировка по алфавиту
+    public static void print_all_clients1(HashMap Clients) {
+        TreeMap<String, LinkedList> sorted1 = new TreeMap<>(Clients);
+        Set<String> keys = sorted1.keySet();
+        for (String elem : keys) {
+            System.out.printf("%20s: %s \n", elem, sorted1.get(elem));
+        }
+    }
+    
+    
     // Функция вывода перечня всех клиентов отсортированные по количеству номеров
-    public static void print_all_clients(HashMap Clients) {
+    public static void print_all_clients2(HashMap Clients) {
         TreeMap<String, LinkedList> sorted1 = new TreeMap<>(Clients);
         Set<String> keys = Clients.keySet();
         for (String elem : keys) {
@@ -56,11 +67,11 @@ public class Task {
     }
 
     public static void main(String[] args) {
-        // Меню
-        System.out.println("Меню: \n1 - Вывести список всех контактов;\n2 - Добавить клиента и его номер телефона к базе дынных");
-        System.out.println("3 - Список всех клиентов и их номеров телефонов;\n4 - Выход");
-        
-        // Генерируем первинчные значения для телефонного справочника
+    // Меню
+        System.out.println("Меню: \n1 - Вывести список всех контактов;\n2 - Добавить клиента и его номер телефона к базе дынных;");
+        System.out.println("3 - Список всех клиентов и их номеров телефонов (сортировка по алфавиту);");
+        System.out.println("4 - Список всех клиентов и их номеров телефонов; \n5 - Выход");
+    // Генерируем первинчные значения для телефонного справочника
         LinkedList<String> NumPhon1 = new LinkedList<>();
         LinkedList<String> NumPhon2 = new LinkedList<>();
         LinkedList<String> NumPhon3 = new LinkedList<>();
@@ -82,22 +93,17 @@ public class Task {
         Clients.put("Петров Петр", NumPhon2);
         Clients.put("Мариянова Маша", NumPhon3);
 
-        // Управление меню
+    // Управление меню
         int num = 0;
-        while (num != 4) {
+        while (num != 5) {
             System.out.print("Введите число: ");
             Scanner scanner = new Scanner(System.in);
             num = scanner.nextInt();
-            if (num == 1) {
-                print_of_nums(Clients);
-            }
-
-            if (num == 2) {
-                Clients = add_client(Clients);
-            }
-
-            if (num == 3) {
-                print_all_clients(Clients);
+            switch (num){
+                case 1: print_of_nums(Clients);
+                case 2: Clients = add_client(Clients);
+                case 3: print_all_clients1(Clients);
+                case 4: print_all_clients2(Clients);
             }
         }
     }
