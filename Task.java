@@ -101,9 +101,13 @@ public class Task {
             num = scanner.nextInt();
             switch (num){
                 case 1: print_of_nums(Clients);
+                continue;
                 case 2: Clients = add_client(Clients);
+                continue;
                 case 3: print_all_clients1(Clients);
+                continue;
                 case 4: print_all_clients2(Clients);
+                continue;
             }
         }
     }
