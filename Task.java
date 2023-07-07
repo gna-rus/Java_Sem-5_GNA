@@ -8,12 +8,8 @@
 //их необходимо считать, как одного человека с разными телефонами. 
 //Вывод должен быть отсортирован по убыванию числа телефонов.
 
-
-//passportsAndNames.put("Дональд Джон Трамп", 8082771);
-//int lidiaName = passportsAndNames.get("Лидия");
-//passportsAndNames.remove("Дональд Джон Трамп");
-
 import java.util.HashMap;
+import java.util.TreeMap;
 import java.util.LinkedList;
 import java.util.Scanner;
 import java.util.Set;
@@ -27,7 +23,6 @@ public class Task {
         for (String elem : keys) {
             System.out.printf("%5d %s\n", count++, elem);
         }
-
     }
 
     // функция добавления нового клиента и его номеров телефонов
@@ -52,21 +47,20 @@ public class Task {
     }
 
     // Функция вывода перечня всех клиентов отсортированные по количеству номеров
-    // сортировка по длинне всего значения сейчас
     public static void print_all_clients(HashMap Clients) {
-
+        TreeMap<String, LinkedList> sorted1 = new TreeMap<>(Clients);
         Set<String> keys = Clients.keySet();
         for (String elem : keys) {
-            System.out.printf("%20s: %s \n", elem, Clients.get(elem));
+            System.out.printf("%20s: %s \n", elem, sorted1.get(elem));
         }
-        //for (int i = 0;i < keys.length(); i++){ System.out.println(Clients);}
     }
 
     public static void main(String[] args) {
-
+        // Меню
         System.out.println("Меню: \n1 - Вывести список всех контактов;\n2 - Добавить клиента и его номер телефона к базе дынных");
         System.out.println("3 - Список всех клиентов и их номеров телефонов;\n4 - Выход");
-
+        
+        // Генерируем первинчные значения для телефонного справочника
         LinkedList<String> NumPhon1 = new LinkedList<>();
         LinkedList<String> NumPhon2 = new LinkedList<>();
         LinkedList<String> NumPhon3 = new LinkedList<>();
@@ -74,10 +68,11 @@ public class Task {
         String str1 = new String("8(965)643-21-22");
         String str2 = new String("8(965)633-11-99");
         String str3 = new String("8(911)322-55-12");
+        String str4 = new String("8(911)888-55-00");
 
         NumPhon1.add(str1);
         NumPhon1.add(str2);
-        NumPhon2.add(str3);
+        NumPhon2.add(str4);
         NumPhon3.add(str1);
         NumPhon3.add(str2);
         NumPhon3.add(str3);
@@ -87,6 +82,7 @@ public class Task {
         Clients.put("Петров Петр", NumPhon2);
         Clients.put("Мариянова Маша", NumPhon3);
 
+        // Управление меню
         int num = 0;
         while (num != 4) {
             System.out.print("Введите число: ");
@@ -106,3 +102,11 @@ public class Task {
         }
     }
 }
+
+
+
+
+
+
+ 
+
